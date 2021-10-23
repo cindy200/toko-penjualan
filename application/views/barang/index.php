@@ -1,4 +1,35 @@
 <div class="container">
+<?php if ($this->session->flashdata('flash')); ?>
+<div class="alert alert-succsess alert-dismissible fade show" role="alert">
+  <strong>Data Barang</strong> <?= $this->session->flashdata('flash'); ?>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+<?php endif; ?>
+
+<?php if (empty($barang)):?>
+  <dif class="alert alert-danger" role="alert">
+    Data Barang Tidak ditemukan...
+  <?php endif; ?>
+
+<div class="row-mt-3">
+  <div class="colmd-6">
+    <a href="<?= base_url(); ?>barang/tambah" class="btn btn-primary"> Tambah Data Barang</a>
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col-md-6">
+  <form action="" method="post">
+  <div class="input-group">
+    <input type="text" class="form-control" placeholder="Cari Data Barang..." name="keyword"> 
+    <button class="btn btn-primary" type="submit" >Cari</button>
+</div>
+   </form>
+
+
+  </div>
+</div>
+
 <table class="table">
   <thead>
     <tr>
@@ -6,6 +37,7 @@
       <th scope="col">Nama barang</th>
       <th scope="col">Harga</th>
       <th scope="col">Stok</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
@@ -15,7 +47,14 @@
       <td><?= $brg['nama_barang']; ?></td>
       <td><?= $brg['harga']; ?></td>
       <td><?= $brg['stok']; ?></td>
-      </tr>
+      <td> <a href="<?= base_url(); ?>barang/detail/<?= $brg['id_barang']; ?>" class="btn btn-primary"> 
+      >Detail</a> 
+      <a href="<?= base_url(); ?>barang/ubah/<?= $brg['id_barang']; ?>" class="btn btn-success"> 
+      >Ubah</a> 
+      <a href="<?= base_url(); ?>barang/hapus/<?= $brg['id_barang']; ?>" class="btn btn-danger"> 
+      onclick= "return confirm ('Yakin Akan Dihapus?');">Hapus</a> 
+   
+    </tr>
       <?php endforeach ?>
     
   </tbody>
