@@ -1,4 +1,11 @@
-<div class="container">
+      <!-- Begin Page Content -->
+      <div class="container-fluid">
+
+<!-- Page Heading -->
+<h1 class="h3 mb-2 text-gray-800">Tables</h1>
+<p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
+    For more information about DataTables, please visit the <a target="_blank"
+        href="https://datatables.net">official DataTables documentation</a>.</p>
 <?php if ($this->session->flashdata('flash')); ?>
 <div class="alert alert-succsess alert-dismissible fade show" role="alert">
   <strong>Data Barang</strong> <?= $this->session->flashdata('flash'); ?>
@@ -9,13 +16,14 @@
 <?php if (empty($barang)):?>
   <dif class="alert alert-danger" role="alert">
     Data Barang Tidak ditemukan...
+  </div>
   <?php endif; ?>
 
-<div class="row-mt-3">
-  <div class="colmd-6">
+<div class="row-mt-2">
+  <div class="colmd-4">
     <a href="<?= base_url(); ?>barang/tambah" class="btn btn-primary"> Tambah Data Barang</a>
   </div>
-</div>
+
 
 <div class="row mt-3">
   <div class="col-md-6">
@@ -29,34 +37,49 @@
 
   </div>
 </div>
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+    </div>
+ 
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                      <th scope="col">Kode Barang</th>
+                      <th scope="col">Nama barang</th>
+                      <th scope="col">Harga</th>
+                      <th scope="col">Stok</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                      <?php foreach ($barang as $brg): ?>
+                      <td><?= $brg['id_barang']; ?></td>
+                      <td><?= $brg['nama_barang']; ?></td>
+                      <td><?= $brg['harga']; ?></td>
+                      <td><?= $brg['stok']; ?></td>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Kode Barang</th>
-      <th scope="col">Nama barang</th>
-      <th scope="col">Harga</th>
-      <th scope="col">Stok</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-        <?php foreach ($barang as $brg): ?>
-      <td><?= $brg['id_barang']; ?></td>
-      <td><?= $brg['nama_barang']; ?></td>
-      <td><?= $brg['harga']; ?></td>
-      <td><?= $brg['stok']; ?></td>
-      <td> <a href="<?= base_url(); ?>barang/detail/<?= $brg['id_barang']; ?>" class="btn btn-primary"> 
-      >Detail</a> 
-      <a href="<?= base_url(); ?>barang/ubah/<?= $brg['id_barang']; ?>" class="btn btn-success"> 
-      >Ubah</a> 
-      <a href="<?= base_url(); ?>barang/hapus/<?= $brg['id_barang']; ?>" class="btn btn-danger"> 
-      onclick= "return confirm ('Yakin Akan Dihapus?');">Hapus</a> 
-   
-    </tr>
-      <?php endforeach ?>
-    
-  </tbody>
-</table>
+                      <td> <a href="<?= base_url(); ?>barang/detail/<?= $brg['id_barang']; ?>" class="btn btn-primary"> 
+                      >Detail</a> 
+                      <a href="<?= base_url(); ?>barang/ubah/<?= $brg['id_barang']; ?>" class="btn btn-success"> 
+                      >Ubah</a> 
+                      <a href="<?= base_url(); ?>barang/hapus/<?= $brg['id_barang']; ?>" class="btn btn-danger"> 
+                      onclick= "return confirm ('Yakin Akan Dihapus?');">Hapus</a> 
+                      </tr>
+                      <?php endforeach ?>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
+
+</div>
+<!-- /.container-fluid -->
+
+</div>
+<!-- End of Main Content -->

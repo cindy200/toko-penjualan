@@ -12,7 +12,9 @@ class Homepage extends CI_Controller{
     funtion index()
     {
         $data['judul']="Toko Online";
-        $this->load->view('templates/header');
+        $this->load->view('templates/header',$data);
+        $this->load->view('templates/sidebar');
+        $this->load->view('templates/topbar');
         $this->load->view('home/index');
         $this->load->view('templates/footer');
     }
